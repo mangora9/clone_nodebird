@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { Menu } from 'antd';
-import 'antd/dist/antd.css';
+import { Col, Menu, Row } from 'antd';
+import LoginForm from '../login/LoginForm';
 
 const AppLayout = ({ children }) => {
   console.log(children);
@@ -19,7 +19,18 @@ const AppLayout = ({ children }) => {
           <Link href="/signup"><a>회원가입</a></Link>
         </Menu.Item>
       </Menu>
-      {children}
+
+      <Row gutter={8}>
+        <Col xs={24} md={6}>
+          <LoginForm />
+        </Col>
+        <Col xs={24} md={12}>
+          {children}
+        </Col>
+        <Col xs={24} md={6}>
+          <a href="https://mangora9.github.io/im2in9" target="_blank" rel="noreferrer noopener">Made by 2In9</a>
+        </Col>
+      </Row>
     </>
   );
 };

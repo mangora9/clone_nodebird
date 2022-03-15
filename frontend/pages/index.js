@@ -1,12 +1,11 @@
 import React from 'react';
-import AppLayout from "../components/layouts/AppLayout";
+import AppLayout from '../components/layouts/AppLayout';
+import PostCard from '../components/post/PostCard';
 
-const Home = () => {
-  return (
-    <AppLayout>
-      <div>메인페이지</div>
-    </AppLayout>
-  );
-};
+const Home = () => (
+  <AppLayout>
+    <PostCard />
+  </AppLayout>
+);
 
 export default Home;
