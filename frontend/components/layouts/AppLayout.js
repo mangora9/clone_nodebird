@@ -1,28 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Col, Menu, Row } from 'antd';
 import LoginForm from '../login/LoginForm';
+import UserProfile from '../profile/UserProfile';
 
 const AppLayout = ({ children }) => {
-  console.log(children);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <>
       <Menu mode="horizontal">
         <Menu.Item key="home">
           <Link href="/"><a>노드버드</a></Link>
         </Menu.Item>
-        <Menu.Item key="profile">
-          <Link href="/profile"><a>프로필</a></Link>
-        </Menu.Item>
-        <Menu.Item key="signup">
-          <Link href="/signup"><a>회원가입</a></Link>
-        </Menu.Item>
+        {isLoggedIn
+          ? (
+            <Menu.Item key="profile">
+              <Link href="/profile"><a>프로필</a></Link>
+            </Menu.Item>
+          )
+          : (
+            <Menu.Item key="signup">
+              <Link href="/signup"><a>회원가입</a></Link>
+            </Menu.Item>
+          )}
       </Menu>
 
       <Row gutter={8}>
         <Col xs={24} md={6}>
-          <LoginForm />
+          {isLoggedIn
+            ? <UserProfile setIsLoggedIn={setIsLoggedIn} />
+            : <LoginForm setIsLoggedIn={setIsLoggedIn} />}
         </Col>
         <Col xs={24} md={12}>
           {children}
