@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import Head from 'next/head';
 import { Button, Checkbox, Form, Input } from 'antd';
 import styled from 'styled-components';
+import Router from 'next/router';
 import AppLayout from '../components/layouts/AppLayout';
 import useInput from '../hooks/useInput';
 
@@ -38,6 +39,7 @@ const Signup = () => {
       return setTermError(true);
     }
     console.log(`${email}, ${password}, ${nickname}`);
+    Router.push('/');
   }, [password, passwordCheck, term]);
   return (
     <>
